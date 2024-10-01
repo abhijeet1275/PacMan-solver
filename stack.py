@@ -20,7 +20,5 @@ class Stack:
     def top(self):
         if self.empty()==False:
             return self.stack[-1]
-        
-    def sort(self) -> None:
-        self.stack.sort(key=lambda x: x[2], reverse=True)
+
     # You can implement this class however you like
