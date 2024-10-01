@@ -43,7 +43,7 @@ class PacMan:
                         visited.add(loc_next)
                         distance = self.dist(loc_next, end)
                         stack.push((loc_next, path + [loc_next], distance))
-            stack.sort()
+            self.sort_stack(stack)
         raise PathNotFoundException
 
     def dist(self, start, end):
@@ -80,3 +80,14 @@ class PacMan:
         if self.correct((x + 1, y)):
             return (x + 1, y)
         return (-1, -1)
+    
+            
+    def sort_stack(self, stack):
+        temp_stack = []
+        while not stack.empty():
+            temp_stack.append(stack.pop())
+    
+        sorted_items = sorted(temp_stack, key=lambda x: x[2], reverse=True)
+    
+        for item in sorted_items:
+            stack.push(item)
